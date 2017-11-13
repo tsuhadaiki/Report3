@@ -18,13 +18,6 @@ public class Hero extends LivingThing {
      * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
      * @return boolean
      */
-    public boolean isDead(){
-        return  dead;
-    }
-
-    public String getName(){
-        return name;
-    }
 
     /**
      * Enemyへ攻撃するメソッド。
@@ -38,10 +31,10 @@ public class Hero extends LivingThing {
      * @param damage 受けたダメージ
      */
     public void wounded(int damage){
-        hitPoint -= damage;
-        if( hitPoint < 0 ) {
-            dead = true;
-            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
+        setHitPoint(getHitPoint() - damage);
+        if (getHitPoint() < 0) {
+            setDead(true);
+            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", getName());
         }
     }
 }
